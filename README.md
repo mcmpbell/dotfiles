@@ -14,4 +14,8 @@
 
   Self explanatory, .bash_profile contains what's needed to start X without DM.
   
+# Xmodmap
+
+  Swap some keys, broken keyboard.
+  
 
