@@ -1,6 +1,6 @@
 # i3 Gaps Config
 
-  Cotton candy colored gaps config, Manjaro Architect i3
+  Cotton candy colored gaps config, Manjaro Architect i3.
   
 # .vimrc
 
@@ -8,4 +8,10 @@
   
 # Xresources
 
-  Settings for urxvt, Manjaro Architect i3
+  Settings for urxvt, Manjaro Architect i3.
+  
+# .bashrc && .bash_profile
+
+  Self explanatory, .bash_profile contains what's needed to start X without DM.
+  
+
