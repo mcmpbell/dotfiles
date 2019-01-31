@@ -18,4 +18,16 @@
 
   Swap some keys, broken keyboard.
   
+# Slock
+
+  slock_mod, change slock screen to black on wake from suspend
+
+# i3lock
+ 
+  i3lock -u -c 000000
+  
+# pulseaudio
+
+# xfce4-power-manager
+  
 
