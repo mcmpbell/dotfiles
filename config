@@ -8,7 +8,7 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
+new_window pixel 2
 new_float normal
 
 # Hide borders
@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Terminus 9
+font xft:Hack Nerd Font 9
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -33,7 +33,7 @@ bindsym $mod+Return exec --no-startup-id urxvt
 bindsym $mod+Shift+m kill
 
 # start program launcher
-bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Terminus-9' -w 870 -y 2 -nb black -sb black -sf '#14B8A2' -nf '#bbbbbb' -p run: -i 
+bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Hack Nerd Font-9' -w 750 -y 2 -nb black -sb black -sf '#14B8A2' -nf '#bbbbbb' -p run: -i 
 
 # launch categorized menu
 # bindsym $mod+z exec --no-startup-id morc_menu
@@ -56,8 +56,8 @@ bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Capture toggl
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
 # Start Applications
 #bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -288,7 +288,7 @@ exec --no-startup-id xfce4-power-manager
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker 'i3lock -u -c 000000'
+exec --no-startup-id xautolock -time 10 -locker slock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -341,7 +341,8 @@ bar {
     colors {
 
           background #000000
-	  statusline #e04f56
+	 # statusline #e04f56
+	  statusline #E04F56
 	  separator  #000000
 
 #                             border  backgr. text
@@ -364,6 +365,7 @@ bar {
 #  class                   border  backgr. text    indic.   child_border
  
    client.focused          #556064 #14B8A2 #000000 #14B8A2
+  #client.focused          #ffffff #ffffff #000000 #ffffff
    client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
    client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
    client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
@@ -376,8 +378,8 @@ bar {
 #############################
 
 # Set inner/outer gaps
-gaps inner 8 
-gaps outer 8
+gaps inner 10 
+gaps outer 10
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
