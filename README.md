@@ -4,29 +4,30 @@
   
 # .vimrc
 
-  Only a couple of things in there, just trying not to forget them.
+  Only a couple of things in there, just trying not to forget them- line numbers, softtabs.
   
 # Xresources
 
-  Settings for urxvt, Manjaro Architect i3.
+  Settings for urxvt (Rxvt-unicode), Manjaro Architect i3.
   
 # .bashrc && .bash_profile
 
-  Self explanatory, .bash_profile contains what's needed to start X without DM.
+  Self explanatory, .bash_profile contains what's needed to start X without a DM.
   
 # Xmodmap
 
-  Swap some keys, broken keyboard.
+  Swap escape and caps lock.
   
 # Slock
 
-  slock_mod, change slock screen to black on wake from suspend
+  slock_mod, change slock screen to black on wake from suspend.
 
 # i3lock
  
-  i3lock -u -c 000000
+  'i3lock -u -c 000000' arguments for i3lock with xautolock, black screen no indicator 
   
 # pulseaudio
+
 
 # xfce4-power-manager
   
