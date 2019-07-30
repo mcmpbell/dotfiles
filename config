@@ -8,23 +8,35 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
-new_float normal
+new_window none
+new_float none
 
 # Hide borders
 hide_edge_borders none
 
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 1
+bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
+
+
+bindsym $mod+Shift+n exec --no-startup-id nm-connection-editor
+bindsym $mod+Shift+v exec --no-startup-id pavucontrol
+bindsym $mod+Shift+q exec --no-startup-id qalculate-gtk
+bindsym $mod+Shift+s exec --no-startup-id subl
+bindsym $mod+Shift+c exec --no-startup-id code
+bindsym $mod+Shift+l exec --no-startup-id libreoffice
+bindsym $mod+Shift+f exec --no-startup-id firefox
+bindsym $mod+Shift+t exec --no-startup-id thunar
+
+title_align center
+default_border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Terminus 9
+font xft:Hack Nerd Font 9
 
 # Use Mouse+$mod to drag floating windows
-floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id urxvt
@@ -33,10 +45,11 @@ bindsym $mod+Return exec --no-startup-id urxvt
 bindsym $mod+Shift+m kill
 
 # start program launcher
-bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Terminus-9' -w 870 -y 2 -nb black -sb black -sf '#14B8A2' -nf '#bbbbbb' -p run: -i 
-
-# launch categorized menu
-# bindsym $mod+z exec --no-startup-id morc_menu
+bindsym $mod+space exec --no-startup-id ~/Projects/Scripts/dmenufs/dmenufullscreen
+#bindsym $mod+space exec --no-startup-id dmenu_run -f -y 2 -p exec:  -fn 'Hack Nerd Font-9' -nb "#000000" -sb "#ff3333" -sf "#000000" -nf '#ff3333' -i 
+#bindsym $mod+space exec --no-startup-id gmrun
+#launch categorized menu
+#bindsym $mod+z exec --no-startup-id morc_menu
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -56,8 +69,8 @@ bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Capture toggl
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
 # Start Applications
 #bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -68,7 +81,7 @@ bindsym $mod+Shift+F3 exec --no-startup-id gksu pcmanfm
 #bindsym $mod+F5 exec terminal -e 'mocp'
 #bindsym $mod+t exec --no-startup-id pkill compton
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Shift+d --release exec "killall dunst"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -80,7 +93,7 @@ focus_follows_mouse no
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+#bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -92,7 +105,7 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -126,7 +139,7 @@ bindsym $mod+Shift+space floating toggle
 #bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+#bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -215,15 +228,17 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
+# for_window [class="discord"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
+for_window [title="Qalculate!"] floating enable 
+for_window [title="Network Connections"] floating enable
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -273,24 +288,25 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id i3lock -u -c 000000
+bindsym $mod+Shift+9 exec --no-startup-id xautolock -locker /usr/local/bin/slock -locknow
   
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
+# exec --no-startup-id manjaro-hello
 #exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id pamac-tray
-#exec --no-startup-id clipit
+# exec --no-startup-id pamac-tray
+# exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker 'i3lock -u -c 000000'
+exec --no-startup-id xautolock -time 10 -locker /usr/local/bin/slock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -324,60 +340,79 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
+bar {   
+
+	i3bar_command i3bar  
 	status_command i3status
 	position top
 
+
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
+	tray_output primary
 #	tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop
-#       font xft:URWGothic-Book 11
+       font xft:Hack Nerd Font 10 
 	strip_workspace_numbers yes
+
+#set $transparent #00000000
 
     colors {
 
-          background #000000
-	  statusline #e04f56
-	  separator  #000000
+ #         background #0E0B0B
+	 background #000000
+	 statusline #ff3333
+#	 statusline #A01631
+	 separator  #000000
 
 #                             border  backgr. text
 
-          focused_workspace  #000000 #000000 #000000
+          focused_workspace  #000000 #000000 #ff3333
 
-          active_workspace   #000000 #000000 #000000
+          active_workspace   #000000 #000000 #777777
 
-	  inactive_workspace #000000 #000000 #000000
+	  inactive_workspace #000000 #000000 #777777
 
-          binding_mode       #16a085 #2C2C2C #F9FAF9
-          urgent_workspace   #16a085 #FDF6E3 #E5201D
+          binding_mode       #000000 #000000 #000000
+          urgent_workspace   #000000 #000000 #000000
     }
 }
+#bar {
+#	i3bar_command i3bar -t
+#	position bottom
+#	workspace_buttons no
+#	font xft:URWGothic-Book 7
+#	
+#	colors {
+#		statusline #00000099
+#		background #00000060
+#} 
 
+#}
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
 
 # Theme colors
 #  class                   border  backgr. text    indic.   child_border
- 
-   client.focused          #556064 #14B8A2 #000000 #14B8A2
-   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+ #4fe0d9
+   client.focused          #5F93FF #5F93FF  #000000 #5F93FF
+#  client.focused          #ffffff # #000000 #ffffff
+   client.focused_inactive #333333 #333333 #B5B5B5 #ff3333
+   client.unfocused        #333333 #333333 #B5B5B5 #ff3333
+   client.urgent           #2F3D44 #2F3D44 #B5B5B5 #ff3333
    client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
    client.background       #000000
+
 
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-gaps inner 8 
-gaps outer 8
+gaps inner 14
+gaps outer 14
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -389,7 +424,8 @@ gaps outer 8
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
+#
+# smart_borders no_gaps
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
