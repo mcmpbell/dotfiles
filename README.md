@@ -26,9 +26,4 @@
  
   'i3lock -u -c 000000' arguments for i3lock with xautolock, black screen no indicator 
   
-# pulseaudio
-
-
-# xfce4-power-manager
-  
 
