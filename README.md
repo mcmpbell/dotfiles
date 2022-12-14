@@ -28,3 +28,5 @@
   
 # .emacs [CURRENTLY IN USE]
 This is my current .emacs file.
+
+Requires: zenburn theme, magit, neotree, org-bullets, ttf-fonts-hack, flycheck, company
